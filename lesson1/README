@@ -1,0 +1,7 @@
+
+Code for loading the json and constructing a control-flow graph.
+
+The unambitious thing that it does is print all of the labels that
+appear in the control-flow graph.
+
+I think the cfg code is a little buggy yet.
