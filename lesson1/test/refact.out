@@ -1,0 +1,3 @@
+label 'then.0' in function 'fac'
+label 'endif.0' in function 'fac'
+label 'else.0' in function 'fac'

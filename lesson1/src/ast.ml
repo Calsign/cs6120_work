@@ -52,6 +52,7 @@ module Load = struct
   let typ_of_json = function
     | `String "int" -> TInt
     | `String "bool" -> TBool
+    | `String t -> failwith ("invalid type: " ^ t)
     | _ -> failwith "invalid type"
 
   let string_of_json = function

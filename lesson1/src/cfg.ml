@@ -50,15 +50,21 @@ let cfg_of_func (func : func) =
         cfg_node.labels)
     bblocks;
 
-  let cfg_of_label label =
+  let add_cfg_dest label cfg_node =
     match find_opt ht label with
-    | Some cfg -> cfg
-    | None -> failwith ("could not find label: " ^ label) in
+    | Some cfg -> cfg_node.dests <- cfg :: cfg_node.dests
+    | None -> (* failwith ("could not find label: " ^ label) *)
+      (* this can happen if there is a label at the very end *)
+      () in
 
   let connect_dests_internal cfg_node next_cfg_node =
     match List.rev cfg_node.instrs |> List.hd with
-    | `EInstr (IJump dest) -> cfg_node.dests <- cfg_of_label dest :: cfg_node.dests
-    | `EInstr (IBranch {t; f}) -> cfg_node.dests <- cfg_of_label t :: cfg_of_label f :: cfg_node.dests
+    | `EInstr (IJump dest) -> add_cfg_dest dest cfg_node
+    | `EInstr (IBranch {t; f}) ->
+      begin
+        add_cfg_dest t cfg_node;
+        add_cfg_dest f cfg_node
+      end
     | `EInstr (IReturn _) -> ()
     | _ ->
       begin
