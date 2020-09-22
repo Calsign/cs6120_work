@@ -1,2 +1,36 @@
 
-TODO
+Contains implementation of "trivial" dead code elimination (--dce) and
+local value numbering (--lvn), i.e. copy propagation and common
+subexpression elimination.
+
+When running local value numbering, we first run dead code
+elimination. Note that running dead code elimination after local value
+numbering will have no effect because local value numbering renames
+any variables that are later overwritten to have fresh names.
+
+The test suite includes turnt tests for correctness and optimization
+of both the DCE and LVN passes. The correctness tests check that the
+brili interpreter produces the correct output on the optimized code,
+and the optimization tests check that the bril code has been changed
+in the expected way. Essentially, if each type of optimization
+produces the correct output and features fewer and/or less complicated
+instructions, then we understand the optimization to be correct.
+
+For LVN in particular, we test copy propagation explicitly in
+copy_prop.bril, common subexpression elimination in cse.bril, and the
+name collision issue in name_collision.bril. Finally, we combine these
+scenarios together in combined.bril.
+
+For example, in combined.bril, the LVN pass renames the overwritten
+`x` variables on lines 2 and 3, propagates the `mul x x` to `w` on
+line 5, and propagates the `y` through to the compuation of `z` on
+line 6. Additionally, DCE eliminates the unused assignment to [x] on
+line 8. This is all correct behavior and it optimizes the code because
+one multiplication instruction can be removed. Furthermore, if there
+were more intelligent dead code elimination taking place, then then
+`w` could be removed entirely.
+
+Note: I used the Bril OCaml library created Kenneth Li (which has been
+merged into the main bril repo). In the last assignment I made my own
+implementation, but I decided to switch for consistency and better
+support for outputting json.

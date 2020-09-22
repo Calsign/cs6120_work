@@ -1,0 +1,6 @@
+@main {
+.block0:
+  x: int = const 0;
+  y: int = id x;
+  print x;
+}

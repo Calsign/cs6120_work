@@ -1,0 +1,1 @@
+command = "bril2json < {filename} | ../main.byte --dce | brili {args}"

@@ -1,0 +1,11 @@
+@main() {
+  x: int = const 2;
+  x: int = mul x x;
+  y: int = mul x x;
+  w: int = mul x x;
+  z: int = mul y w;
+  print z;
+  x: int = const 3;
+  x: int = const 4;
+  print x;
+}

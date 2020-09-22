@@ -1,0 +1,11 @@
+@main {
+.block0:
+  _fresh1: int = const 2;
+  _fresh2: int = mul _fresh1 _fresh1;
+  y: int = mul _fresh2 _fresh2;
+  w: int = id y;
+  z: int = mul y y;
+  print z;
+  x: int = const 4;
+  print x;
+}

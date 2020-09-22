@@ -1,0 +1,7 @@
+@main {
+.block0:
+  x: int = const 2;
+  print x;
+  x: int = const 3;
+  print x;
+}

@@ -43,7 +43,13 @@ let perform_bblock (bblock : Bril.Instr.t list) =
   |> snd
 
 let perform_func (func : Bril.Func.t) =
-  {func with blocks = Core.String.Map.map func.blocks perform_bblock}
+  {func with blocks = Core.String.Map.map func.blocks ~f:perform_bblock}
 
 let perform_funcs (funcs : Bril.Func.t list) =
   List.map perform_func funcs
+
+let rec perform_until_convergence funcs =
+  (* for some reason this is failing, saying we're comparing functions?? *)
+  let funcs' = perform_funcs funcs in
+  if funcs = funcs' then funcs'
+  else perform_until_convergence funcs'
