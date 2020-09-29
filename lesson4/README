@@ -1,0 +1,17 @@
+
+I implemented a dataflow analysis framework and used it to perform one
+particular analysis, copy propagation. I have not tested it with other
+dataflow analyses.
+
+It works for simple control-flow graphs, as demonstrated by the tests
+basic.bril and branch.bril, but it fails for more complicated
+control-flow graphs, as demonstrated by multi_branch.bril and
+pythagorean_triple.bril. I think it is failing due to bugs in the
+control-flow graph generation code rather than bugs in the dataflow
+analysis or copy propagation code, but obviously I don't know this for
+sure. I have run out of time to fix these bugs because unfortunately I
+am bad at time management.
+
+Note: we did dataflow analysis in CS 4120, and I used pieces of that
+code as reference, but the code here is newly created for this
+assignment.

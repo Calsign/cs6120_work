@@ -1,0 +1,5 @@
+@main() {
+  x: int = const 3;
+  y: int = id x;
+  x: int = mul x y;
+}

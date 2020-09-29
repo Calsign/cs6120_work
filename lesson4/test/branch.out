@@ -1,0 +1,10 @@
+{"op":"const","value":4,"dest":"x","type":"int"}  ->  x: 4
+{"op":"const","value":false,"dest":"cond","type":"bool"}  ->  cond: false, x: 4
+{"op":"br","args":["cond"],"labels":["br1","br2"]}  ->  cond: false, x: 4
+{"op":"const","value":2,"dest":"y","type":"int"}  ->  cond: false, x: 4, y: 2
+{"op":"const","value":4,"dest":"z","type":"int"}  ->  cond: false, x: 4, y: 2, z: 4
+{"op":"jmp","labels":["end"]}  ->  cond: false, x: 4, y: 2, z: 4
+{"op":"const","value":2,"dest":"y","type":"int"}  ->  cond: false, x: 4, y: 2
+{"op":"const","value":3,"dest":"x","type":"int"}  ->  cond: false, x: 3, y: 2
+{"op":"jmp","labels":["end"]}  ->  cond: false, x: 3, y: 2
+{"op":"print","args":["x"]}  ->  cond: false, x: ?, y: 2, z: 4

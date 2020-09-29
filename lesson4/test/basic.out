@@ -1,0 +1,3 @@
+{"op":"const","value":3,"dest":"x","type":"int"}  ->  x: 3
+{"op":"id","args":["x"],"dest":"y","type":"int"}  ->  x: 3, y: 3
+{"op":"mul","args":["x","y"],"dest":"x","type":"int"}  ->  x: ?, y: 3

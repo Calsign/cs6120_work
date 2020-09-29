@@ -1,0 +1,15 @@
+@main() {
+  x: int = const 4;
+  cond: bool = const false;
+  br cond .br1 .br2;
+.br1:
+  y: int = const 2;
+  z: int = const 4;
+  jmp .end;
+.br2:
+  y: int = const 2;
+  x: int = const 3;
+  jmp .end;
+.end:
+  print x;
+}

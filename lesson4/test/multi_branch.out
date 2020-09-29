@@ -1,0 +1,17 @@
+{"op":"const","value":10,"dest":"x","type":"int"}  ->  x: 10
+{"op":"const","value":20,"dest":"z","type":"int"}  ->  x: 10, z: 20
+{"op":"const","value":true,"dest":"cond","type":"bool"}  ->  cond: true, x: 10, z: 20
+{"op":"br","args":["cond"],"labels":["br1","br2"]}  ->  cond: true, x: 10, z: 20
+{"op":"const","value":11,"dest":"x","type":"int"}  ->  cond: true, x: 11, z: 20
+{"op":"jmp","labels":["mid"]}  ->  cond: true, x: 11, z: 20
+{"op":"const","value":21,"dest":"z","type":"int"}  ->  cond: true, x: 10, z: 21
+{"op":"const","value":11,"dest":"x","type":"int"}  ->  cond: true, x: 11, z: 21
+{"op":"br","args":["cond"],"labels":["mid","br4"]}  ->  cond: true, x: 11, z: 21
+{"op":"const","value":22,"dest":"z","type":"int"}  ->  cond: true, x: 11, z: 22
+{"op":"br","args":["cond"],"labels":["br3","br4"]}  ->  cond: true, x: 11, z: 22
+{"op":"id","args":["z"],"dest":"y","type":"int"}  ->  x: 12
+{"op":"const","value":12,"dest":"x","type":"int"}  ->  x: 12
+{"op":"jmp","labels":["end"]}  ->  x: 12
+{"op":"id","args":["y"],"dest":"z","type":"int"}  ->  cond: true, x: ?, z: 21
+{"op":"jmp","labels":["end"]}  ->  cond: true, x: ?, z: 21
+{"op":"print","args":["x","y","z"]}  ->  cond: true, x: ?, z: 21

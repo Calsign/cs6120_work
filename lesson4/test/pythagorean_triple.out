@@ -1,0 +1,16 @@
+{"op":"const","value":1,"dest":"one","type":"int"}  ->  one: 1
+{"op":"mul","args":["n","n"],"dest":"n_sq","type":"int"}  ->  n_sq: ?, one: 1
+{"op":"id","args":["one"],"dest":"a","type":"int"}  ->  a: 1, n_sq: ?, one: 1
+{"op":"id","args":["one"],"dest":"b","type":"int"}  ->  a: 1, b: 1, n_sq: ?, one: 1
+{"op":"mul","args":["a","a"],"dest":"a_sq","type":"int"}  ->  a: ?, a_sq: ?, b: ?, b_sq: ?, done: ?, found: ?, sum: ?
+{"op":"mul","args":["b","b"],"dest":"b_sq","type":"int"}  ->  a: ?, a_sq: ?, b: ?, b_sq: ?, done: ?, found: ?, sum: ?
+{"op":"add","args":["a_sq","b_sq"],"dest":"sum","type":"int"}  ->  a: ?, a_sq: ?, b: ?, b_sq: ?, done: ?, found: ?, sum: ?
+{"op":"eq","args":["sum","n_sq"],"dest":"found","type":"bool"}  ->  a: ?, a_sq: ?, b: ?, b_sq: ?, done: ?, found: ?, sum: ?
+{"op":"br","args":["found"],"labels":["found","inner_continue"]}  ->  a: ?, a_sq: ?, b: ?, b_sq: ?, done: ?, found: ?, sum: ?
+{"op":"print","args":["b","a"]}  ->  a: ?, a_sq: ?, b: ?, b_sq: ?, done: ?, found: ?, sum: ?
+{"op":"add","args":["b","one"],"dest":"b","type":"int"}  ->  a: ?, a_sq: ?, b: ?, b_sq: ?, done: ?, found: ?, sum: ?
+{"op":"ge","args":["b","a"],"dest":"done","type":"bool"}  ->  a: ?, a_sq: ?, b: ?, b_sq: ?, done: ?, found: ?, sum: ?
+{"op":"br","args":["done"],"labels":["outer_continue","inner_loop"]}  ->  a: ?, a_sq: ?, b: ?, b_sq: ?, done: ?, found: ?, sum: ?
+{"op":"add","args":["a","one"],"dest":"a","type":"int"}  ->  a: ?, done: ?
+{"op":"ge","args":["a","n"],"dest":"done","type":"bool"}  ->  a: ?, done: ?
+{"op":"br","args":["done"],"labels":["finish","outer_loop"]}  ->  a: ?, done: ?
