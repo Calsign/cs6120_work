@@ -1,0 +1,8 @@
+dominators for function main:
+block_0: [block_0]
+label_finish: [block_0; label_finish; label_inner_continue; label_inner_loop; label_outer_continue; label_outer_loop]
+label_found: [block_0; label_found; label_inner_loop; label_outer_loop]
+label_inner_continue: [block_0; label_inner_continue; label_inner_loop; label_outer_loop]
+label_inner_loop: [block_0; label_inner_loop; label_outer_loop]
+label_outer_continue: [block_0; label_inner_continue; label_inner_loop; label_outer_continue; label_outer_loop]
+label_outer_loop: [block_0; label_outer_loop]

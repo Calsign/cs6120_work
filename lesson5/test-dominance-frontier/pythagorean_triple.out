@@ -1,0 +1,8 @@
+dominance frontier for function main:
+block_0: []
+label_finish: []
+label_found: [label_inner_continue]
+label_inner_continue: [label_inner_loop; label_outer_loop]
+label_inner_loop: [label_outer_loop]
+label_outer_continue: [label_outer_loop]
+label_outer_loop: []

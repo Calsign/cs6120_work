@@ -1,0 +1,5 @@
+dominance tree for function main:
+block_0: [label_br1; label_br2; label_end]
+label_br1: []
+label_br2: []
+label_end: []

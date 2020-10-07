@@ -1,0 +1,10 @@
+@main() {
+  cond: bool = const false;
+  br cond .br1 .br2;
+.br1:
+  jmp .end;
+.br2:
+  jmp .end;
+.end:
+  print cond;
+}

@@ -10,4 +10,4 @@ let () =
   match Sys.argv with
   | [| _ |] -> main stdin
   | [| _; fname |] -> open_in fname |> main
-  | _ -> prerr_endline "Unexpcted argument"
+  | _ -> prerr_endline "Unexpected argument"

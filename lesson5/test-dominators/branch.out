@@ -1,0 +1,5 @@
+dominators for function main:
+block_0: [block_0]
+label_br1: [block_0; label_br1]
+label_br2: [block_0; label_br2]
+label_end: [block_0; label_end]
