@@ -1,6 +1,7 @@
 
 open Printers
 open Dom
+open Ssa
 
 let common channel =
   Yojson.Basic.from_channel channel
@@ -30,10 +31,25 @@ let main_dominance_frontier channel =
       print_endline (dominance_frontier func |> string_of_string_set_string_map);
     end
 
+let main_ssa_midpoint channel =
+  common channel
+  |> List.map to_ssa
+  |> Bril.to_json
+  |> Yojson.Basic.to_channel stdout
+
+let main_ssa_roundtrip channel =
+  common channel
+  |> List.map to_ssa
+  |> List.map from_ssa
+  |> Bril.to_json
+  |> Yojson.Basic.to_channel stdout
+
 let () =
   match Sys.argv with
   | [| _; "--dominators" |] -> main_dominators stdin
   | [| _; "--dominance-tree" |] -> main_dominance_tree stdin
   | [| _; "--dominance-frontier" |] -> main_dominance_frontier stdin
+  | [| _; "--ssa-midpoint" |] -> main_ssa_midpoint stdin
+  | [| _; "--ssa-roundtrip" |] -> main_ssa_roundtrip stdin
   | [| _ |] -> prerr_endline "Missing argument"
   | _ -> prerr_endline "Unexpected argument"
