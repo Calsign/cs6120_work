@@ -1,0 +1,37 @@
+
+To invoke my synthesizer, run `./synthesis.py` and supply a sketch and
+target expression when prompted.
+
+The base implementation is essentially the same as the one provided by
+Adrian, but with the added feature that it accepts holes written with
+two questions marks ('??').
+
+I extended the base implementation to support filling not just integer
+constants, but arbitrary variables in any hole. I know this
+possibility was addressed in the tutorial, but my code actually
+implements it.
+
+It uses chained ternary operations to encode the choice of the
+variable, and it uses the Z3 API to perform simplification.
+
+For example, it can complete the following:
+
+sketch: x + y + x
+holes: ?? + ?? * ??
+output: y + 2 * x
+
+This clearly isn't that useful, but I think the general technique
+could be more useful in the presence of more language features (even
+without support for synthesizing those language features).
+
+The above example did not take a noticeable amount of time. This
+implementation does seem to have scaling issues, though. For example,
+the following example took about five seconds:
+
+sketch: a + a + b + b + c + c + d + d
+holes: ?? * ?? + ?? * ?? + ?? * ?? + ?? * ??
+output: 2 * d + 2 * c + 2 * b + 2 * a
+
+I didn't see the ex3.py sample until after I made this. While my
+approach may be less elegant than the approach used in ex3, it is more
+powerful because it supports filling arbitrary variables, not just x.
